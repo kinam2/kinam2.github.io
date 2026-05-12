@@ -1,18 +1,9 @@
 title: "kinam2"
 description: "Personal & PD research hub"
 url: "https://kinam2.github.io"
-baseurl: ""  # 루트에서 서비스
+baseurl: ""  # 반드시 빈 문자열
 
-# GitHub Pages에서는 github-pages 젬 안에 포함된 Jekyll + 플러그인을 사용
-# 여기서 따로 theme: 를 지정하지 않으면, 이 리포의 레이아웃/자산을 그대로 씁니다.
-# (지금은 minimal-mistakes 전체가 들어 있으므로, 그걸 그대로 활용해도 됨)
+theme: minima
 
 plugins:
   - jekyll-feed
-  - jekyll-seo-tag
-
-# Minimal Mistakes가 사용하는 기본 설정 최소만 남겨둔 형태
-locale: "ko"
-name: "kinam2"
-author:
-  name: "kinam2"
