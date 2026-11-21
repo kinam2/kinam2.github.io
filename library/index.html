@@ -9,11 +9,10 @@ permalink: /library/
   <h2>{{ topic.name | escape }}</h2>
   <ul>
     {%- for item in topic.items %}
-    <li><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a>{% if item.type == 'Canvas 내보내기' %} <small>[{{ item.type }}]</small>{% endif %}</li>
+    <li><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a>{% if item.type == 'Canvas 내보내기' %} <small>[{{ item.type }}]</small>{% endif %}{% if item.pdf %} <small><a href="{{ item.pdf | relative_url }}" aria-label="{{ item.title | escape }} PDF">PDF</a></small>{% endif %}</li>
     {%- endfor %}
   </ul>
 </section>
 {%- endfor %}
 
-<p><a href="https://kinam2.github.io/bahula.github.io/">PD HTML 실험 공간</a></p>
 <p><a href="{{ '/' | relative_url }}">대문으로</a></p>
