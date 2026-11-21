@@ -1,0 +1,31 @@
+{%- assign manual_entries = site.data.library | default: empty -%}
+{%- assign entries = manual_entries -%}
+{%- for post in site.posts -%}
+  {%- assign extension = post.path | split: '.' | last | downcase -%}
+  {%- if post.library != false and post.published != false -%}
+    {%- if extension == 'md' or extension == 'markdown' -%}
+      {%- assign entries = entries | push: post -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- assign topics = '' | split: ',' -%}
+{%- for entry in entries -%}
+  {%- assign topic = entry.topic | default: entry['주제'] | default: '미분류' -%}
+  {%- unless topics contains topic -%}
+    {%- assign topics = topics | push: topic -%}
+  {%- endunless -%}
+{%- endfor -%}
+{%- assign entries = entries | sort: 'library_order', 'last' -%}
+{%- for topic in topics %}
+<section data-library-topic>
+  <h2>{{ topic | escape }}</h2>
+  <ul>
+  {%- for entry in entries -%}
+    {%- assign entry_topic = entry.topic | default: entry['주제'] | default: '미분류' -%}
+    {%- if entry_topic == topic -%}
+      {%- include library-row.html entry=entry topic=topic -%}
+    {%- endif -%}
+  {%- endfor %}
+  </ul>
+</section>
+{%- endfor %}

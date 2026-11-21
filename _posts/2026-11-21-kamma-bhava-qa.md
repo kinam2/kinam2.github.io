@@ -1,5 +1,7 @@
 ---
 title: kamma bhava 질문 정리
+library_title: 질문 정리
+library_order: 30
 작성일: 2026-11-20
 분야:
   - 개념

@@ -19,17 +19,7 @@ permalink: /library/
   <input type="search" aria-label="자료 검색" placeholder="제목·주제·태그 검색" autocomplete="off">
   <p role="status"></p>
 </div>
-{%- assign topics = site.data.library | group_by: 'topic' -%}
-{%- for topic in topics %}
-<section data-library-topic>
-  <h2>{{ topic.name | escape }}</h2>
-  <ul>
-    {%- for item in topic.items %}
-    <li data-library-entry="{{ item.title | append: ' ' | append: topic.name | escape }} {{ item.tags | join: ' ' | escape }}"><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a>{% if item.pdf %} <small><a href="{{ item.pdf | relative_url }}" aria-label="{{ item.title | escape }} PDF">PDF</a></small>{% endif %}</li>
-    {%- endfor %}
-  </ul>
-</section>
-{%- endfor %}
+{% include library-catalog.html %}
 
 <p><a href="{{ '/' | relative_url }}">대문으로</a></p>
 
