@@ -3,16 +3,47 @@ layout: library
 title: 자료실
 permalink: /library/
 ---
+<div class="library-search" role="search" hidden>
+  <input type="search" aria-label="자료 검색" placeholder="제목·주제·태그 검색" autocomplete="off">
+  <p role="status"></p>
+</div>
 {%- assign topics = site.data.library | group_by: 'topic' -%}
 {%- for topic in topics %}
-<section>
+<section data-library-topic>
   <h2>{{ topic.name | escape }}</h2>
   <ul>
     {%- for item in topic.items %}
-    <li><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a>{% if item.pdf %} <small><a href="{{ item.pdf | relative_url }}" aria-label="{{ item.title | escape }} PDF">PDF</a></small>{% endif %}</li>
+    <li data-library-entry="{{ item.title | append: ' ' | append: topic.name | escape }} {{ item.tags | join: ' ' | escape }}"><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a>{% if item.pdf %} <small><a href="{{ item.pdf | relative_url }}" aria-label="{{ item.title | escape }} PDF">PDF</a></small>{% endif %}</li>
     {%- endfor %}
   </ul>
 </section>
 {%- endfor %}
 
 <p><a href="{{ '/' | relative_url }}">대문으로</a></p>
+
+<script>
+(() => {
+  const search = document.querySelector('.library-search');
+  const input = search.querySelector('input');
+  const status = search.querySelector('[role="status"]');
+  const normalize = value => value.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().normalize('NFC').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+  const groups = Array.from(document.querySelectorAll('[data-library-topic]'), group => ({group, entries: Array.from(group.querySelectorAll('[data-library-entry]'), row => ({row, key: normalize(row.dataset.libraryEntry)}))}));
+  function update() {
+    const terms = normalize(input.value).split(' ').filter(Boolean);
+    let count = 0;
+    for (const {group, entries} of groups) {
+      let matches = 0;
+      for (const {row, key} of entries) {
+        row.hidden = !terms.every(term => key.includes(term));
+        if (!row.hidden) matches++;
+      }
+      group.hidden = matches === 0;
+      count += matches;
+    }
+    status.textContent = terms.length ? (count ? `검색 결과 ${count}개` : '일치하는 자료가 없습니다.') : '';
+  }
+  input.addEventListener('input', update);
+  search.hidden = false;
+  update();
+})();
+</script>

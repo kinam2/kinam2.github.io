@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'ko' }}">
   {%- include head.html -%}
+  <style>
+    .library-header .wrapper { display: flex; align-items: center; justify-content: space-between; }
+    .library-header h1 { margin: 0; font-size: 1.125rem; font-weight: 600; line-height: 3.4; }
+    .library-header a { color: inherit; }
+    .library-search { margin-bottom: 1.5rem; }
+    .library-search input { box-sizing: border-box; width: 100%; max-width: 30rem; min-height: 44px; padding: .55rem .75rem; border: 1px solid #777; border-radius: 5px; background: transparent; color: inherit; font: inherit; }
+    .library-search input::placeholder { color: inherit; opacity: .8; }
+    .library-search input:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+    .library-search p { margin: .5rem 0 0; }
+  </style>
   <body>
-    {%- include header.html -%}
-    <main class="page-content" aria-label="자료실">
+    <header class="site-header library-header">
+      <div class="wrapper">
+        <h1 id="library-title">{{ page.title | escape }}</h1>
+        <a href="{{ '/' | relative_url }}" aria-label="bahula 대문">bahula</a>
+      </div>
+    </header>
+    <main class="page-content" aria-labelledby="library-title">
       <div class="wrapper">
         {% include theme-mode.html %}
         <article class="post">
-          <header class="post-header">
-            <h1 class="post-title">{{ page.title | escape }}</h1>
-          </header>
           <div class="post-content">
             {{ content }}
           </div>
