@@ -7,5 +7,16 @@
         {{ content }}
       </div>
     </main>
+    <footer style="padding: 0 0 1.5rem">
+      <div class="wrapper">
+        <a href="{{ '/feed.xml' | relative_url }}" aria-label="RSS/Atom으로 새 글 구독" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.3rem 0; font-size: 0.8125rem; color: inherit">
+          <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="color: #b45309">
+            <circle cx="5" cy="19" r="2" fill="currentColor"/>
+            <path d="M3 11a10 10 0 0 1 10 10M3 4a17 17 0 0 1 17 17" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          </svg>
+          RSS/Atom
+        </a>
+      </div>
+    </footer>
   </body>
 </html>
