@@ -1,0 +1,49 @@
+<style>
+  .theme-mode { float: right; margin: 0 0 .5rem .75rem; }
+  .theme-mode button { font: inherit; font-size: .85rem; line-height: 1.25; min-height: 34px; padding: .3rem .55rem; border: 1px solid #777; border-radius: 5px; color: inherit; background: transparent; cursor: pointer; }
+  .theme-mode button:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+  html[data-bahula-theme="dark"] { color-scheme: dark; }
+  html[data-bahula-theme="dark"] body { background: #15191e; color: #e4e8ee; }
+  html[data-bahula-theme="dark"] a { color: #9ec7ff; }
+  html[data-bahula-theme="dark"] a:visited { color: #c6b8fa; }
+  html[data-bahula-theme="dark"] a:hover { color: #e4e8ee; }
+  html[data-bahula-theme="dark"] .site-header { border-color: #474f59; }
+  html[data-bahula-theme="dark"] .site-title,
+  html[data-bahula-theme="dark"] .site-nav .page-link { color: #e4e8ee; }
+  @media screen and (max-width: 600px) {
+    html[data-bahula-theme="dark"] .site-nav { background: #15191e; border-color: #626d78; }
+    html[data-bahula-theme="dark"] .site-nav .menu-icon > svg path { fill: #e4e8ee; }
+  }
+  html[data-bahula-theme="dark"] footer a[href$="/feed.xml"] svg { color: #ffb56b !important; }
+  html[data-bahula-theme="dark"] footer a[href*="app.netlify.com"] { color: #61e6de !important; }
+</style>
+<div class="theme-mode">
+  <button type="button" hidden data-theme-toggle>밤 모드</button>
+</div>
+<script>
+(function () {
+  const root = document.documentElement;
+  const button = document.querySelector('[data-theme-toggle]');
+  const system = window.matchMedia('(prefers-color-scheme: dark)');
+  const key = 'bahula-color-theme';
+  let saved;
+  try { saved = localStorage.getItem(key); } catch (_) {}
+  function apply() {
+    const mode = (saved === 'dark' || saved === 'light') ? saved : (system.matches ? 'dark' : 'light');
+    root.dataset.bahulaTheme = mode;
+    button.textContent = mode === 'dark' ? '낮 모드' : '밤 모드';
+  }
+  apply();
+  button.hidden = false;
+  button.addEventListener('click', function () {
+    saved = root.dataset.bahulaTheme === 'dark' ? 'light' : 'dark';
+    try { localStorage.setItem(key, saved); } catch (_) {}
+    apply();
+  });
+  system.addEventListener('change', apply);
+  window.addEventListener('pageshow', function () {
+    try { saved = localStorage.getItem(key); } catch (_) {}
+    apply();
+  });
+}());
+</script>
