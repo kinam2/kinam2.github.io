@@ -1,12 +1,18 @@
-title: "kinam2"
-description: "Personal & PD research hub"
-url: "https://kinam2.github.io"
+title: "bahula"
+description: "Pure Dhamma(PD) 탐구 자료를 공유하는 허브입니다."
+url: "https://cloudshand.netlify.app"
 baseurl: ""  # 반드시 빈 문자열
+lang: ko
+header_pages:
+  - library/index.html
 
 theme: minima
 
 plugins:
   - jekyll-feed
+
+include:
+  - _headers
 
 defaults:
   - scope:
@@ -14,4 +20,3 @@ defaults:
       type: posts
     values:
       layout: post
-

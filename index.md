@@ -1,21 +1,11 @@
 ---
-layout: home
-title: "kinam2 · Home"
+layout: landing
 ---
 
-# kinam2
+# bahula
 
-개인 연구와 Pure Dhamma(PD) 프로젝트를 정리하는 허브입니다.
+**Pure Dhamma 탐구 기록**
 
-아직 구조를 정리하는 중입니다.  
-아래 링크들은 임시 “출입구” 역할을 합니다.
+Pure Dhamma(PD) 탐구 자료를 공유하는 허브입니다.
 
-## 프로젝트 허브
-
-- [bahula.github.io · PD HTML 실험 스페이스](https://kinam2.github.io/bahula.github.io/)
-
-## HTML 페이지
-
-- [kamma bhava 지도](/html/kamma-bhava-map.html)
-- [Ānāpānassatisutta 제1부](/html/anapanasati-sutta-part1.html)
-
+[자료실 →]({{ '/library/' | relative_url }})

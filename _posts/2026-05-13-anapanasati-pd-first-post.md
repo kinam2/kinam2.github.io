@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: post
 title: "Ānāpānassati·PD 연구 노트 1: 전체 구도 잡기"
 date: 2026-05-13 09:00:00 +0900
 categories:

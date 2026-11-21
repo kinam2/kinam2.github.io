@@ -1,0 +1,19 @@
+---
+layout: page
+title: 자료실
+permalink: /library/
+---
+{%- assign topics = site.data.library | group_by: 'topic' -%}
+{%- for topic in topics %}
+<section>
+  <h2>{{ topic.name | escape }}</h2>
+  <ul>
+    {%- for item in topic.items %}
+    <li><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a>{% if item.type == 'Canvas 내보내기' %} <small>[{{ item.type }}]</small>{% endif %}</li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endfor %}
+
+<p><a href="https://kinam2.github.io/bahula.github.io/">PD HTML 실험 공간</a></p>
+<p><a href="{{ '/' | relative_url }}">대문으로</a></p>
