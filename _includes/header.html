@@ -1,7 +1,7 @@
 {%- if page.layout == 'post' or page.collection == 'posts' -%}
 <header class="site-header" role="banner">
   <nav class="wrapper" aria-label="주 메뉴" style="display: flex; justify-content: flex-end; align-items: center; min-height: 55px; text-align: right">
-    <a href="{{ '/library/' | relative_url }}" lang="en" style="color: inherit; padding: .45rem 0">The Way of the Noble Ancients</a>
+    <a href="{{ '/' | relative_url }}" lang="en" style="color: inherit; padding: .45rem 0">The Way of the Noble Ancients</a>
   </nav>
 </header>
 {%- else -%}
@@ -10,7 +10,7 @@
   <div class="wrapper">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
-    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+    <a class="site-title" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
 
     {%- if page_paths -%}
       <nav class="site-nav">

@@ -1,4 +1,5 @@
-title: "bahula"
+title: "성자의 옛길"
+author: "bahula"
 description: "Pure Dhamma(PD) 탐구 자료를 공유하는 허브입니다."
 url: "https://cloudshand.netlify.app"
 baseurl: ""  # 반드시 빈 문자열
@@ -20,11 +21,13 @@ defaults:
       type: posts
     values:
       layout: post
+      author: "bahula"
   - scope:
       path: ""
       type: reflections
     values:
       layout: reflection
+      author: "bahula"
       section_title: 단상
 
 
