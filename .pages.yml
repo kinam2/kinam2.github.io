@@ -1,0 +1,36 @@
+content:
+  - name: library
+    label: HTML 자료실 목록
+    type: file
+    path: _data/library.yml
+    format: yaml
+    list: true
+    operations:
+      rename: false
+      delete: false
+    fields:
+      - name: title
+        label: 제목
+        type: string
+        required: true
+      - name: topic
+        label: 주제
+        type: string
+        required: true
+      - name: tags
+        label: 검색 태그
+        type: string
+        list: true
+      - name: url
+        label: HTML 주소
+        type: string
+        required: true
+      - name: type
+        label: 자료 유형
+        type: string
+      - name: library_order
+        label: 표시 순서
+        type: number
+      - name: pdf
+        label: PDF 주소 [선택]
+        type: string
