@@ -14,3 +14,9 @@ title: "kinam2 · Home"
 
 - [bahula.github.io · PD HTML 실험 스페이스](https://kinam2.github.io/bahula.github.io/)
 - [Ānāpānassati · 제1부 실험 페이지](https://kinam2.github.io/bahula.github.io/anapanasati_sutta_part1.html)
+
+## HTML 페이지
+
+- [kamma bhava 지도](/html/kamma-bhava-map.html)
+- [Ānāpānassatisutta 제1부](/html/anapanasati-sutta-part1.html)
+
