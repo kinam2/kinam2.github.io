@@ -4,13 +4,12 @@
   <body>
     <main class="page-content" aria-label="대문">
       <div class="wrapper">
-        {% include theme-mode.html %}
         <h1>{{ page.title | escape }}</h1>
         {{ content }}
       </div>
     </main>
     <footer style="padding: 0 0 1.5rem">
-      <div class="wrapper">
+      <div class="wrapper" style="display: flex; align-items: center">
         <a href="{{ '/feed.xml' | relative_url }}" aria-label="RSS/Atom으로 새 글 구독" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.3rem 0; font-size: 0.8125rem; color: inherit">
           <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="color: #b45309">
             <circle cx="5" cy="19" r="2" fill="currentColor"/>
@@ -27,6 +26,7 @@
             <path d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38l-.01-1.49c-2.23.48-2.7-.95-2.7-.95-.36-.92-.89-1.16-.89-1.16-.73-.5.05-.49.05-.49.81.06 1.23.83 1.23.83.71 1.22 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.65-.89-3.65-3.96 0-.87.31-1.59.82-2.15-.08-.2-.35-1.02.08-2.13 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.43 1.11.16 1.93.08 2.13.51.56.82 1.28.82 2.15 0 3.08-1.87 3.76-3.66 3.96.29.25.54.74.54 1.49l-.01 2.18c0 .21.15.46.55.38A8 8 0 0 0 8 0z"/>
           </svg>
         </a>
+        {% include theme-mode.html show_toggle=true %}
       </div>
     </footer>
   </body>
