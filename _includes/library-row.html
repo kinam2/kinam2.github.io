@@ -1,3 +1,3 @@
 {%- assign entry = include.entry -%}
 {%- assign label = entry.library_title | default: entry.title -%}
-<li data-library-entry="{{ label | escape }} {{ entry.title | escape }} {{ include.topic | escape }} {{ entry.tags | join: ' ' | escape }} {{ entry.keywords | join: ' ' | escape }}"><a href="{{ entry.url | relative_url }}">{{ label | escape }}</a>{% if entry.pdf %} <small><a href="{{ entry.pdf | relative_url }}" aria-label="{{ label | escape }} PDF">PDF</a></small>{% endif %}</li>
+<li data-search-key="{{ entry.url | relative_url | escape }}" data-library-entry="{{ label | escape }} {{ entry.title | escape }} {{ include.topic | escape }} {{ entry.tags | join: ' ' | escape }} {{ entry.keywords | join: ' ' | escape }}"><a href="{{ entry.url | relative_url }}">{{ label | escape }}</a>{% if entry.pdf %} <small><a href="{{ entry.pdf | relative_url }}" aria-label="{{ label | escape }} PDF">PDF</a></small>{% endif %}</li>

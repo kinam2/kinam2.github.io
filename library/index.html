@@ -46,7 +46,7 @@ permalink: /library/
   const normalize = value => value.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().normalize('NFC').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
   const entries = groups.flatMap(group => Array.from(group.querySelectorAll('[data-library-entry]'), row => ({
     key: normalize(row.dataset.libraryEntry), topic: group.dataset.libraryTopic,
-    link: row.querySelector('a')
+    link: row.querySelector('a'), indexKey: row.dataset.searchKey
   })));
   groups.forEach(group => group.addEventListener('toggle', () => {
     if (group.open) groups.forEach(other => { if (other !== group) other.open = false; });
@@ -99,7 +99,7 @@ permalink: /library/
     if (!terms.length) { status.textContent = ''; return; }
     const matches = [];
     for (const entry of entries) {
-      const body = index?.get(entry.link.getAttribute('href'));
+      const body = index?.get(entry.indexKey);
       const metadataMatch = terms.every(term => entry.key.includes(term));
       if (!metadataMatch && !terms.every(term => entry.key.includes(term) || body?.key.includes(term))) continue;
       matches.push({ entry, body, metadataMatch });
