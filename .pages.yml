@@ -34,3 +34,34 @@ content:
       - name: pdf
         label: PDF 주소 [선택]
         type: string
+  - name: reflections
+    label: 단상 글
+    type: collection
+    path: _reflections
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{hour}{minute}{second}.md"
+    exclude: [".gitkeep"]
+    subfolders: false
+    operations:
+      rename: false
+    view:
+      fields: [title, date]
+      primary: title
+      sort: date
+      order: desc
+    fields:
+      - name: title
+        label: 제목
+        type: string
+        required: true
+      - name: date
+        label: 날짜
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: body
+        label: 본문
+        type: rich-text
+        required: true
+        description: 저장하면 공개 저장소에 올라갑니다. 공개할 글만 입력하세요.

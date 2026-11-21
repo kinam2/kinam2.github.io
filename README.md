@@ -28,3 +28,7 @@ Pages CMS는 독립 HTML의 **제목·주제·검색 태그·주소**를 편집�
 4. 필요한 검색 태그를 추가하고 **Save**를 누른 뒤, 공개 자료실에서 새 링크가 열리는지 확인합니다.
 
 공개 Markdown 글은 기존대로 `_posts/`에서 자동 등록되므로 이 목록에 따로 추가하지 않습니다.
+
+### 단상 글 올리기
+
+[Pages CMS](https://app.pagescms.org/kinam2/kinam2.github.io/master/file/library)에서 **단상 글 → 새 글 추가**를 선택합니다. **제목·날짜·본문**을 입력하고 **Save**를 누르면 공개 GitHub 저장소의 `_reflections/`에 저장됩니다. Netlify 배포 후 [단상 목록](https://cloudshand.netlify.app/reflections/)에 최신 날짜부터 표시됩니다. 단상은 기존 자료실 목록과 본문 검색에 포함되지 않습니다. 비공개 초고는 CMS에 저장하지 말고 Obsidian 등 개인 공간에 보관하세요.

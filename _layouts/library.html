@@ -9,7 +9,7 @@
   <body>
     <header class="site-header library-header">
       <div class="wrapper">
-        <h1 id="library-title">{{ page.title | escape }}</h1>
+        <h1 id="library-title">{{ page.section_title | default: page.title | escape }}</h1>
         <a href="{{ '/' | relative_url }}" aria-label="bahula 대문">bahula</a>
       </div>
     </header>

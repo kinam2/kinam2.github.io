@@ -20,7 +20,20 @@ defaults:
       type: posts
     values:
       layout: post
+  - scope:
+      path: ""
+      type: reflections
+    values:
+      layout: reflection
+      section_title: 단상
+
+
 
 exclude:
   - pdf/anapanasati-sutta-part1.pdf
   - pdf/anapanasati-sutta-part2.pdf
+
+collections:
+  reflections:
+    output: true
+    permalink: /reflections/:name/

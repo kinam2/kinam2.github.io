@@ -1,0 +1,7 @@
+---
+layout: library
+---
+<h2 class="reflection-title">{{ page.title | escape }}</h2>
+<p><time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: '%Y-%m-%d' }}</time></p>
+{{ content }}
+<p><a href="{{ '/reflections/' | relative_url }}">단상 목록으로</a></p>
