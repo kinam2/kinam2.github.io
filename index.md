@@ -13,7 +13,6 @@ title: "kinam2 · Home"
 ## 프로젝트 허브
 
 - [bahula.github.io · PD HTML 실험 스페이스](https://kinam2.github.io/bahula.github.io/)
-- [Ānāpānassati · 제1부 실험 페이지](https://kinam2.github.io/bahula.github.io/anapanasati_sutta_part1.html)
 
 ## HTML 페이지
 
