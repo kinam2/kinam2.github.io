@@ -3,7 +3,19 @@ layout: library
 title: 자료실
 permalink: /library/
 ---
-<div class="library-search" role="search" hidden>
+<style>
+  .library-search-bar { display: flex; justify-content: flex-end; }
+  .library-search-toggle:not([hidden]) { display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 5px; color: inherit; background: transparent; cursor: pointer; }
+  .library-search-toggle:hover { background: rgba(128, 128, 128, .15); }
+  .library-search-toggle:focus-visible { outline: 2px solid currentColor; }
+  .library-search:not([hidden]) { text-align: right; }
+</style>
+<div class="library-search-bar">
+  <button class="library-search-toggle" type="button" hidden aria-controls="library-search" aria-expanded="false" aria-label="자료 검색 열기" title="자료 검색 열기">
+    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
+  </button>
+</div>
+<div class="library-search" id="library-search" role="search" hidden>
   <input type="search" aria-label="자료 검색" placeholder="제목·주제·태그 검색" autocomplete="off">
   <p role="status"></p>
 </div>
@@ -25,6 +37,7 @@ permalink: /library/
 (() => {
   const search = document.querySelector('.library-search');
   const input = search.querySelector('input');
+  const toggle = document.querySelector('.library-search-toggle');
   const status = search.querySelector('[role="status"]');
   const normalize = value => value.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().normalize('NFC').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
   const groups = Array.from(document.querySelectorAll('[data-library-topic]'), group => ({group, entries: Array.from(group.querySelectorAll('[data-library-entry]'), row => ({row, key: normalize(row.dataset.libraryEntry)}))}));
@@ -43,7 +56,27 @@ permalink: /library/
     status.textContent = terms.length ? (count ? `검색 결과 ${count}개` : '일치하는 자료가 없습니다.') : '';
   }
   input.addEventListener('input', update);
-  search.hidden = false;
+  function setOpen(open) {
+    search.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    const label = open ? '자료 검색 닫기' : '자료 검색 열기';
+    toggle.setAttribute('aria-label', label);
+    toggle.title = label;
+    if (open) input.focus();
+    else {
+      input.value = '';
+      update();
+      toggle.focus();
+    }
+  }
+  toggle.addEventListener('click', () => setOpen(search.hidden));
+  search.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      setOpen(false);
+    }
+  });
+  toggle.hidden = false;
   update();
 })();
 </script>
