@@ -5,12 +5,18 @@
     .library-header .wrapper { display: flex; align-items: center; justify-content: space-between; }
     .library-header h1 { margin: 0; font-size: 1.125rem; font-weight: 600; line-height: 3.4; }
     .library-header a { color: inherit; }
+    .library-home-icon { display: grid; place-items: center; min-width: 44px; min-height: 44px; margin-right: -8px; }
+    .library-home-icon img { display: block; width: 28px; height: 28px; object-fit: contain; }
   </style>
   <body>
     <header class="site-header library-header">
       <div class="wrapper">
         <h1 id="library-title">{{ page.section_title | default: page.title | escape }}</h1>
+        {%- if page.url == '/reflections/' or page.collection == 'reflections' %}
+        <a class="library-home-icon" href="{{ '/' | relative_url }}" aria-label="bahula 대문"><img src="{{ '/assets/bahula-leaf.png' | relative_url }}" width="28" height="28" alt=""></a>
+        {%- else %}
         <a href="{{ '/' | relative_url }}" aria-label="bahula 대문">bahula</a>
+        {%- endif %}
       </div>
     </header>
     <main class="page-content" aria-labelledby="library-title">
