@@ -11,21 +11,29 @@
 {%- assign topics = '' | split: ',' -%}
 {%- for entry in entries -%}
   {%- assign topic = entry.topic | default: entry['주제'] | default: '미분류' -%}
-  {%- unless topics contains topic -%}
+  {%- unless topics contains topic or topic == '미분류' -%}
     {%- assign topics = topics | push: topic -%}
   {%- endunless -%}
 {%- endfor -%}
+{%- assign topics = topics | push: '미분류' -%}
 {%- assign entries = entries | sort: 'library_order', 'last' -%}
+<div class="library-topics">
 {%- for topic in topics %}
-<section data-library-topic>
-  <h2>{{ topic | escape }}</h2>
-  <ul>
-  {%- for entry in entries -%}
-    {%- assign entry_topic = entry.topic | default: entry['주제'] | default: '미분류' -%}
-    {%- if entry_topic == topic -%}
-      {%- include library-row.html entry=entry topic=topic -%}
-    {%- endif -%}
-  {%- endfor %}
-  </ul>
-</section>
+  {%- assign count = 0 -%}
+  {%- capture rows -%}
+    {%- for entry in entries -%}
+      {%- assign entry_topic = entry.topic | default: entry['주제'] | default: '미분류' -%}
+      {%- if entry_topic == topic -%}
+        {%- assign count = count | plus: 1 -%}
+        {%- include library-row.html entry=entry topic=topic -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+  {%- if count > 0 %}
+    <details name="library-topic" data-library-topic="{{ topic | escape }}">
+      <summary>{{ topic | escape }} <span class="library-topic-count">({{ count }})</span></summary>
+      <ul>{{ rows }}</ul>
+    </details>
+  {%- endif -%}
 {%- endfor %}
+</div>

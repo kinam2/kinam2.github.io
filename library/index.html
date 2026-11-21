@@ -12,17 +12,25 @@ permalink: /library/
   .library-search input { display: block; box-sizing: border-box; width: 100%; min-height: 44px; padding: 0 .25rem; border: 0; outline: 0; border-radius: 0; background: transparent; color: inherit; font: inherit; }
   .library-search-status { margin: 0; text-align: right; }
   .library-search-status:empty { display: none; }
+  .library-topics, .library-results { margin-bottom: 1rem; }
+  .library-topics details { border-bottom: 1px solid rgba(128, 128, 128, .28); }
+  .library-topics summary { box-sizing: border-box; min-height: 44px; padding: .6rem .25rem; font-size: 1.125rem; font-weight: 600; cursor: pointer; }
+  .library-topics summary:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
+  .library-topic-count, .library-result-topic { font-size: .8125rem; font-weight: 400; opacity: .8; }
+  .library-results li { margin-bottom: .7rem; }
+  .library-result-snippet { margin: .15rem 0 0; font-size: .875rem; overflow-wrap: anywhere; }
 </style>
 <div class="library-search-bar">
   <button class="library-search-toggle" type="button" hidden aria-controls="library-search" aria-expanded="false" aria-label="자료 검색 열기" title="자료 검색 열기">
     <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
   </button>
   <div class="library-search" id="library-search" role="search" hidden>
-    <input type="search" aria-label="제목·주제·태그 검색" autocomplete="off">
+    <input type="search" aria-label="제목·주제·태그·본문 검색" autocomplete="off">
   </div>
 </div>
 <p class="library-search-status" role="status"></p>
 {% include library-catalog.html %}
+<ol class="library-results" aria-label="자료 검색 결과" data-index-url="{{ '/library/search-index.json' | relative_url }}" hidden></ol>
 
 <p><a href="{{ '/' | relative_url }}">대문으로</a></p>
 
@@ -32,44 +40,108 @@ permalink: /library/
   const input = search.querySelector('input');
   const toggle = document.querySelector('.library-search-toggle');
   const status = document.querySelector('.library-search-status');
+  const topics = document.querySelector('.library-topics');
+  const results = document.querySelector('.library-results');
+  const groups = Array.from(topics.querySelectorAll('details'));
   const normalize = value => value.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().normalize('NFC').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
-  const groups = Array.from(document.querySelectorAll('[data-library-topic]'), group => ({group, entries: Array.from(group.querySelectorAll('[data-library-entry]'), row => ({row, key: normalize(row.dataset.libraryEntry)}))}));
-  function update() {
-    const terms = normalize(input.value).split(' ').filter(Boolean);
-    let count = 0;
-    for (const {group, entries} of groups) {
-      let matches = 0;
-      for (const {row, key} of entries) {
-        row.hidden = !terms.every(term => key.includes(term));
-        if (!row.hidden) matches++;
-      }
-      group.hidden = matches === 0;
-      count += matches;
-    }
-    status.textContent = terms.length ? (count ? `검색 결과 ${count}개` : '일치하는 자료가 없습니다.') : '';
+  const entries = groups.flatMap(group => Array.from(group.querySelectorAll('[data-library-entry]'), row => ({
+    key: normalize(row.dataset.libraryEntry), topic: group.dataset.libraryTopic,
+    link: row.querySelector('a')
+  })));
+  groups.forEach(group => group.addEventListener('toggle', () => {
+    if (group.open) groups.forEach(other => { if (other !== group) other.open = false; });
+  }));
+
+  let indexTask, index, failed = false, timer;
+  function loadIndex() {
+    if (indexTask) return;
+    failed = false;
+    indexTask = fetch(results.dataset.indexUrl)
+      .then(response => { if (!response.ok) throw new Error('Search index unavailable'); return response.json(); })
+      .then(data => {
+        index = new Map(Object.entries(data).map(([url, passages]) => {
+          const blocks = passages.map(text => ({ text, key: normalize(text) }));
+          return [url, { blocks, key: blocks.map(block => block.key).join(' ') }];
+        }));
+      })
+      .catch(() => { failed = true; indexTask = undefined; })
+      .finally(update);
   }
-  input.addEventListener('input', update);
+
+  function snippetFor(blocks, terms) {
+    let best, score = 0;
+    for (const block of blocks) {
+      const count = terms.filter(term => block.key.includes(term)).length;
+      if (count > score) { best = block; score = count; }
+      if (count === terms.length) break;
+    }
+    if (!best) return '';
+    const chars = Array.from(best.text);
+    if (chars.length <= 150) return best.text;
+    const target = Math.min(...terms.map(term => best.key.indexOf(term)).filter(i => i >= 0));
+    let lo = 0, hi = chars.length;
+    while (lo < hi) {
+      const mid = (lo + hi) >>> 1;
+      if (normalize(chars.slice(0, mid).join('')).length < target) lo = mid + 1;
+      else hi = mid;
+    }
+    const start = Math.max(0, lo - 35);
+    const stop = Math.min(chars.length, start + 150);
+    return `${start ? '…' : ''}${chars.slice(start, stop).join('').trim()}${stop < chars.length ? '…' : ''}`;
+  }
+
+  function update() {
+    clearTimeout(timer);
+    const terms = [...new Set(normalize(input.value).split(' ').filter(Boolean))];
+    topics.hidden = terms.length > 0;
+    results.hidden = terms.length === 0;
+    results.replaceChildren();
+    if (!terms.length) { status.textContent = ''; return; }
+    const matches = [];
+    for (const entry of entries) {
+      const body = index?.get(entry.link.getAttribute('href'));
+      const metadataMatch = terms.every(term => entry.key.includes(term));
+      if (!metadataMatch && !terms.every(term => entry.key.includes(term) || body?.key.includes(term))) continue;
+      matches.push({ entry, body, metadataMatch });
+    }
+    matches.sort((a, b) => Number(b.metadataMatch) - Number(a.metadataMatch));
+    const fragment = document.createDocumentFragment();
+    for (const { entry, body } of matches) {
+      const row = document.createElement('li');
+      const topic = document.createElement('span');
+      topic.className = 'library-result-topic';
+      topic.textContent = ` · ${entry.topic}`;
+      row.append(entry.link.cloneNode(true), topic);
+      const snippet = body && snippetFor(body.blocks, terms);
+      if (snippet) {
+        const paragraph = document.createElement('p');
+        paragraph.className = 'library-result-snippet';
+        paragraph.textContent = snippet;
+        row.append(paragraph);
+      }
+      fragment.append(row);
+    }
+    results.append(fragment);
+    const count = matches.length;
+    status.textContent = failed ? `제목·주제·태그 검색 결과 ${count}개 · 본문을 불러오지 못했습니다.`
+      : !index ? `본문 불러오는 중…${count ? ` (현재 ${count}개)` : ''}`
+      : count ? `검색 결과 ${count}개` : '일치하는 자료가 없습니다.';
+  }
+  input.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(update, 70); });
+
   function setOpen(open) {
     search.hidden = !open;
     toggle.setAttribute('aria-expanded', String(open));
     const label = open ? '자료 검색 닫기' : '자료 검색 열기';
     toggle.setAttribute('aria-label', label);
     toggle.title = label;
-    if (open) input.focus();
-    else {
-      input.value = '';
-      update();
-      toggle.focus();
-    }
+    if (open) { input.focus(); loadIndex(); }
+    else { input.value = ''; update(); toggle.focus(); }
   }
   toggle.addEventListener('click', () => setOpen(search.hidden));
   search.addEventListener('keydown', event => {
-    if (event.key === 'Escape') {
-      event.preventDefault();
-      setOpen(false);
-    }
+    if (event.key === 'Escape') { event.preventDefault(); setOpen(false); }
   });
   toggle.hidden = false;
-  update();
 })();
 </script>
