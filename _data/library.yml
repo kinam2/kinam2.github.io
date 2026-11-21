@@ -1,40 +1,56 @@
 - title: 개념 지도
-  library_order: 20
   topic: kamma bhava
-  type: Canvas 내보내기
+  tags:
+    - map
   url: /html/kamma-bhava-map.html
-- title: 'Ānāpānassatisutta(MN 118) 낭송·해설(1)'
+  type: Canvas 내보내기
+  library_order: 20
+- title: Ānāpānassatisutta(MN 118) 낭송·해설(1)
   topic: Ānāpānassati
-  tags: ["MN 118", "anapanasati"]
-  type: 원문 풀이
+  tags:
+    - MN 118
+    - anapanasati
   url: /html/anapanasati-sutta-part1.html
-- title: 'Ānāpānassatisutta(MN 118) 낭송·해설(2)'
-  topic: Ānāpānassati
-  tags: ["MN 118", "anapanasati"]
   type: 원문 풀이
+- title: Ānāpānassatisutta(MN 118) 낭송·해설(2)
+  topic: Ānāpānassati
+  tags:
+    - MN 118
+    - anapanasati
   url: /html/anapanasati-sutta-part2.html
-- title: 'Ānāpānassatisutta(MN 118) 낭송·해설(3)'
-  topic: Ānāpānassati
-  tags: ["MN 118", "anapanasati"]
   type: 원문 풀이
+- title: Ānāpānassatisutta(MN 118) 낭송·해설(3)
+  topic: Ānāpānassati
+  tags:
+    - MN 118
+    - anapanasati
   url: /html/anapanasati-sutta-part3.html
-- title: 'Ānāpānassatisutta(MN 118) 낭송·해설(4)'
-  topic: Ānāpānassati
-  tags: ["MN 118", "anapanasati"]
   type: 원문 풀이
+- title: Ānāpānassatisutta(MN 118) 낭송·해설(4)
+  topic: Ānāpānassati
+  tags:
+    - MN 118
+    - anapanasati
   url: /html/anapanasati-sutta-part4.html
-- title: 'Ānāpānassatisutta(MN 118) 낭송·해설(5)'
-  topic: Ānāpānassati
-  tags: ["MN 118", "anapanasati"]
   type: 원문 풀이
+- title: Ānāpānassatisutta(MN 118) 낭송·해설(5)
+  topic: Ānāpānassati
+  tags:
+    - MN 118
+    - anapanasati
   url: /html/anapanasati-sutta-part5.html
-- title: 'Ānāpānassatisutta(MN 118) 낭송·해설(6)'
-  topic: Ānāpānassati
-  tags: ["MN 118", "anapanasati"]
   type: 원문 풀이
+- title: Ānāpānassatisutta(MN 118) 낭송·해설(6)
+  topic: Ānāpānassati
+  tags:
+    - MN 118
+    - anapanasati
   url: /html/anapanasati-sutta-part6.html
-- title: 'Ānāpānassatisutta(MN 118) 낭송·해설(7)'
-  topic: Ānāpānassati
-  tags: ["MN 118", "anapanasati"]
   type: 원문 풀이
+- title: Ānāpānassatisutta(MN 118) 낭송·해설(7)
+  topic: Ānāpānassati
+  tags:
+    - MN 118
+    - anapanasati
   url: /html/anapanasati-sutta-part7.html
+  type: 원문 풀이
