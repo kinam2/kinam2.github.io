@@ -5,6 +5,7 @@
 Jekyll::Hooks.register [:posts, :pages], :pre_render do |doc|
   next unless doc.extname == ".md"
   c = doc.content
+  c = c.sub(/\A\s*#[ \t]+#{Regexp.escape(doc.data["title"].to_s)}[ \t]*\n/, "") if doc.data["title"]
   c = c.gsub(/!\[\[[^\]]*\]\]/, "")
   c = c.gsub(/\[\[([^\]|]*)\|([^\]]+)\]\]/) { $2 }
   c = c.gsub(/\[\[([^\]]+)\]\]/) { $1.sub(/^#/, "").sub("#", " › ") }
