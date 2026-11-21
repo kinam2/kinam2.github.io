@@ -9,7 +9,7 @@ permalink: /library/
   <h2>{{ topic.name | escape }}</h2>
   <ul>
     {%- for item in topic.items %}
-    <li><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a>{% if item.type == 'Canvas 내보내기' %} <small>[{{ item.type }}]</small>{% endif %}{% if item.pdf %} <small><a href="{{ item.pdf | relative_url }}" aria-label="{{ item.title | escape }} PDF">PDF</a></small>{% endif %}</li>
+    <li><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a>{% if item.pdf %} <small><a href="{{ item.pdf | relative_url }}" aria-label="{{ item.title | escape }} PDF">PDF</a></small>{% endif %}</li>
     {%- endfor %}
   </ul>
 </section>

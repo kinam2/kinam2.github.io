@@ -20,3 +20,7 @@ defaults:
       type: posts
     values:
       layout: post
+
+exclude:
+  - pdf/anapanasati-sutta-part1.pdf
+  - pdf/anapanasati-sutta-part2.pdf
