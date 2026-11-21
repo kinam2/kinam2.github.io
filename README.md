@@ -31,4 +31,11 @@ Pages CMS는 독립 HTML의 **제목·주제·검색 태그·주소**를 편집�
 
 ### 단상 글 올리기
 
-[Pages CMS](https://app.pagescms.org/kinam2/kinam2.github.io/master/file/library)에서 **단상 글 → 새 글 추가**를 선택합니다. **제목·날짜·본문**을 입력하고 **Save**를 누르면 공개 GitHub 저장소의 `_reflections/`에 저장됩니다. Netlify 배포 후 [단상 목록](https://cloudshand.netlify.app/reflections/)에 최신 날짜부터 표시됩니다. 단상은 기존 자료실 목록과 본문 검색에 포함되지 않습니다. 비공개 초고는 CMS에 저장하지 말고 Obsidian 등 개인 공간에 보관하세요.
+[새 단상 바로 쓰기](https://app.pagescms.org/kinam2/kinam2.github.io/master/collection/reflections/new) · [공개 단상 목록](https://cloudshand.netlify.app/reflections/)
+
+1. Pages CMS 왼쪽 메뉴에서 **단상 글**을 열고 오른쪽 위 **Add an entry**를 누릅니다. 위의 **새 단상 바로 쓰기** 링크로 들어가면 이 단계를 건너뛸 수 있습니다.
+2. **제목**, **날짜**, **본문**을 입력합니다. 본문은 **Editor**에서 쓰거나 **Source**에서 Markdown으로 입력할 수 있습니다. 주제나 태그는 필요 없습니다.
+3. 오른쪽 위 **Save**를 누릅니다. 글은 공개 GitHub 저장소의 `_reflections/`에 저장됩니다. 나중에 수정하려면 **단상 글** 목록에서 기존 글을 열어 고친 뒤 다시 **Save**를 누릅니다.
+4. Netlify 배포가 끝나면 **대문 → 단상**에서 날짜와 제목이 최신순으로 표시되는지, 제목을 눌렀을 때 본문이 열리는지 확인합니다.
+
+단상은 자료실 목록과 검색에 포함되지 않습니다. **Save**는 비공개 임시 저장이 아니므로, 공개하지 않을 초고는 Obsidian 등 개인 공간에 보관하세요.
