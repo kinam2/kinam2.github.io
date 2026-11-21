@@ -24,7 +24,7 @@
       </div>
 
       <div class="footer-col footer-col-3">
-        <p>{{- site.description | escape -}}</p>
+        <p>{%- if page.layout == 'post' or page.collection == 'posts' -%}PD 탐구 자료를 공유하는 허브입니다.{%- else -%}{{ site.description | escape }}{%- endif -%}</p>
       </div>
     </div>
 
