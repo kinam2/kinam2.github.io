@@ -1,6 +1,6 @@
 ---
 layout: landing
-title: Pure Dhamma 탐구 기록
+title: 성자의 옛길
 ---
 
 PD 탐구 자료를 공유하는 허브입니다.
