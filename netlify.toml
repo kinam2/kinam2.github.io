@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "/pd"
+  to = "https://publish.obsidian.md/serve?url=cloudshand.netlify.app/pd/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/pd/*"
+  to = "https://publish.obsidian.md/serve?url=cloudshand.netlify.app/pd/:splat"
+  status = 200
+  force = true
