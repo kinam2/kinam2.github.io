@@ -8,6 +8,30 @@
 - `library_title`로 자료실 제목만 바꿀 수 있습니다. 자료실에서만 숨기려면 `library: false`를 사용합니다. 이 설정은 글 자체를 비공개로 만들지 않습니다.
 - 독립 HTML은 `_data/library.yml`에 등록합니다. Markdown 글을 이 파일에 중복 등록하지 않습니다.
 
+### HackMD에서 고친 글 다시 올리기
+
+[공개 자료실](https://cloudshand.netlify.app/library/)
+
+HackMD 노트가 GitHub 파일과 연결되어 있으면, 노트를 고친 뒤 Push 한 번으로 사이트 글이 바뀝니다. 같은 파일을 덮어쓰므로 글 주소는 그대로입니다.
+
+1. HackMD에서 노트를 고칩니다. 저장은 자동입니다.
+2. 오른쪽 위 **시계 아이콘**(Share 왼쪽)을 눌러 **Versions and GitHub Sync** 창을 엽니다.
+3. 창 아래쪽 **↑ Push**를 누릅니다. 커밋은 곧바로 공개됩니다.
+4. 1~2분 뒤 글 주소를 열고 새로고침해 바뀐 내용을 확인합니다. 그대로 보이면 `Cmd+Shift+R`로 강력 새로고침합니다.
+
+창 아래쪽에 "This note is not linked with GitHub"가 보이면 아직 연결되지 않은 노트입니다. 처음 한 번만 **↑ Push to GitHub**를 눌러 아래처럼 지정합니다.
+
+- Repository: `kinam2/kinam2.github.io`
+- Branch: `master`
+- File: `_posts/날짜-영문이름.md` (이미 올린 글이면 기존 파일 경로를 그대로 입력)
+
+주의할 점
+
+- 파일 이름을 바꾸지 않습니다. 날짜와 영문 이름이 글 주소가 되므로, 바꾸면 예전 링크가 끊깁니다.
+- 노트 맨 위 YAML(`---`로 감싼 부분)을 지우지 않습니다. 지우면 자료실 목록에서 빠집니다.
+- 창 아래쪽 **+ Add badge**는 누르지 않습니다. 사이트 글 맨 위에 배지 그림이 생깁니다.
+- 날짜는 오늘이나 그 이전으로 둡니다. 한국 시간 자정 직후처럼 UTC로 아직 전날일 때 그날 날짜로 올리면, 빌드 시각이 그 날짜에 이를 때까지 글이 숨겨집니다.
+
 ### Pages CMS 사용법
 
 [HTML 자료실 목록 편집 열기](https://app.pagescms.org/kinam2/kinam2.github.io/master/file/library) · [공개 자료실](https://cloudshand.netlify.app/library/)
