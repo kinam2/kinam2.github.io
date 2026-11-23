@@ -155,7 +155,7 @@ idaṃ thūlaṃ potthakaṃ은 또 이렇게도 읽힙니다: **idaṃ thūla�
 
 ### (g) PD에서 만나는 지시대명사 — etaṃ mama, esohamasmi, eso me attā
 
-Pure Dhamma가 여러 글에서 다루는 구절에 이번 과의 eta가 세 번 나옵니다.〔PD〕[^pd1][^pd2]
+Pure Dhamma가 여러 글에서 다루는 구절에 이번 과의 eta가 세 번 나옵니다.〔PD〕[^pd1],[^pd2]
 
 ```
 etaṃ mama, esohamasmi, eso me attā
@@ -171,7 +171,7 @@ etaṃ mama, esohamasmi, eso me attā
 ```
 
 - 문법 포인트는 **같은 eta가 etaṃ(nt.)과 eso(m.)로 모양을 바꾼다**는 점입니다. 성이 왜 바뀌는지는 문맥과 짝 단어에 달려 있습니다. 예를 들어 eso me attā에서 eso가 남성 명사 attā와 성을 맞춘 것으로 볼 수 있습니다.〔추론〕
-- PD는 이 구절을 "이것은 내 것이다, 이것이 나다, 이것이 나의 자아다"로 옮기는 흔한 번역을 받아들이지 않습니다. attā를 '자아'로 옮기는 것이 문제라고 보고, '나의 것, 나 자신의 것, 나에게 이로울 수 있는 것'에 가까운 뜻으로 풉니다. PD는 이 구절이 "왜곡된 saññā"에서 taṇhā, māna, diṭṭhi가 일어나는 과정을 묘사한다고 설명합니다.〔PD〕[^pd2][^pd3]
+- PD는 이 구절을 "이것은 내 것이다, 이것이 나다, 이것이 나의 자아다"로 옮기는 흔한 번역을 받아들이지 않습니다. attā를 '자아'로 옮기는 것이 문제라고 보고, '나의 것, 나 자신의 것, 나에게 이로울 수 있는 것'에 가까운 뜻으로 풉니다. PD는 이 구절이 "왜곡된 saññā"에서 taṇhā, māna, diṭṭhi가 일어나는 과정을 묘사한다고 설명합니다.〔PD〕[^pd2], [^pd3]
 - 부정형 **netaṃ mama, nesohamasmi, na meso attā**는 na + etaṃ, na + eso … 처럼 부정어 na가 eta 꼴과 연음(sandhi)된 모양입니다.〔추론; 연음은 교재 부록 D〕
 
 [^pd1]: Pure Dhamma, "Anatta in Anattalakkhaṇa Sutta – Part 2". <https://puredhamma.net/key-dhamma-concepts/basic-framework-of-buddha-dhamma/tilakkhana-introduction/anatta-in-anattalakkhana-sutta-part-2>
