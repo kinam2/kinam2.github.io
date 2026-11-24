@@ -18,11 +18,11 @@ pd_summary: 이 글은 뜻을 옮기는 번역을 문자 체계 사이의 음역
 # Pāli 낱말 – 표기와 발음
 
 > [!info] Source history
-> **May 27, 2023; <span style="color: #3366ff">last revised September 18, 2026</span>**
-> source: https://puredhamma.net/buddhism-in-charts/pali-words-writing-pronunciation/
+> **May 27, 2023; <span style="color: #3366ff">last revised September 18, 2026</span>**  
+> [source: Pāli Words – Writing and Pronunciation](https://puredhamma.net/buddhism-in-charts/pali-words-writing-pronunciation/)
 
 라틴(로마) 문자로 쓴 Pāli 낱말은 1866년 영국 정부가 채택한 독특한 규약을 사용한다. 나는 같은 글자를 여러 방식으로 발음할 수 있는 “표준 영어”[Standard English] 표기와 구별하기 위해 이것을 “*Tipiṭaka* English 표기 규약”(하나의 소리를 나타내도록 특정 글자를 지정하는 것)이라고 부른다. 오늘날 많은 사람이 이 “*Tipiṭaka* English **표기** 규약”을 알지 못한다.
-
+)
 > [!abstract] 핵심 요지
 > 이 글은 번역·음역·전사를 구별하고, 낱말을 간결하게 유지하면서 발음을 보존하려는, Pāli를 라틴 문자로 적는 “Tipiṭaka English 규약”을 설명한다.
 
@@ -173,4 +173,4 @@ H: “hat”에서는 숨이 섞인 “h”이고, “hour”에서는 소리가
 **내려받기/인쇄:** “[15. Pāli 낱말 – 표기와 발음](https://drive.google.com/uc?export=download&id=1j_wvHB-zN96X8CrKtjEYfOtDeQkrrwI5)”
 
 ## Reference
-1. [Master The Pali Alphabet In No Time | Pali101- Pali For Beginners | Level - 1 | Dhamma USA - YouTube](https://youtu.be/n5igsiSw_Pw?si=gEkobLAB_lr-LdFh)
+1. [Master The Pali Alphabet In No Time, Pali 101- Pali For Beginners, Level - 1, Dhamma USA - YouTube](https://youtu.be/n5igsiSw_Pw?si=gEkobLAB_lr-LdFh)  
