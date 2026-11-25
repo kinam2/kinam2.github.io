@@ -6,6 +6,16 @@
   url: /html/kamma-bhava-map.html
   type: Canvas 내보내기
   library_order: 20
+- title: Ānāpānassatisutta(MN 118) 낭송·해설 (제1–7부 통합본)
+  topic: Ānāpānassati
+  tags:
+    - MN 118
+    - anapanasati
+    - anapanassati
+    - 통합본
+  url: /html/anapanasati-sutta-complete.html
+  type: 원문 풀이
+  library_order: 30
 - title: Ānāpānassatisutta(MN 118) 낭송·해설(1)
   topic: Ānāpānassati
   tags:
