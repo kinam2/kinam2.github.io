@@ -1,6 +1,6 @@
 ---
 title: kamma bhava 질문 정리
-library_title: 질문 정리
+library_title: kamma bhava 질문 정리
 library_order: 30
 작성일: 2026-11-20
 갱신일: 2026-11-26

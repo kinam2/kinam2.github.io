@@ -1,6 +1,6 @@
 ---
 title: kamma bhava 쉬운 설명
-library_title: 쉬운 설명
+library_title: kamma bhava 쉬운 설명
 library_order: 10
 작성일: 2026-11-18
 갱신일: 2026-11-26
